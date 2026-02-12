@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Per te 💌</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 id="title">Buongiorno Luamarito ☀️</h1>
+  
+  <!-- testo -->
+  <p id="text"></p>
+
+  <!-- immagini e bottone sotto al testo -->
+  <div id="imagesBox" style="margin-bottom:20px;"></div>
+  <button id="nextBtn" onclick="nextText()">Buongiorno Luamarita ➜</button>
+</div>
+
+
+<script>
+  const messages = [
+    "stavo per scriverti solo “buon San Valentino” su whatsapp",
+    "però poi ho pensato che il mio luamarito si meritava un po' più di impegno",
+    "quindi...",
+    "ti chiedo"
+  ];
+
+  const buttonTexts = [
+    "banale",
+    "Ohhh e quindi?",
+    "quindi...",
+    "cosa?"
+  ];
+
+  const images = [
+    ["images/img1.jpg", "images/img2.jpg","images/img3.jpg", "images/img4.jpg"],
+    ["images/img5.jpg", "images/img6.jpg","images/img7.jpg"],
+    ["images/img8.jpg", "images/img9.jpg"],
+    ["images/img10.jpg"]
+  ];
+
+  let index = 0;
+
+  function nextText() {
+    const textEl = document.getElementById("text");
+    const btn = document.getElementById("nextBtn");
+    const imagesBox = document.getElementById("imagesBox");
+
+    if (index < messages.length) {
+
+      // Mostro subito il testo
+      textEl.innerText = messages[index];
+
+      // Nascondo bottone e immagini
+      btn.style.display = "none";
+      imagesBox.innerHTML = "";
+
+      // Dopo 2 secondi, mostro immagini e bottone
+      setTimeout(() => {
+        images[index].forEach(src => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.style.maxWidth = "140px";
+          img.style.margin = "6px";
+          imagesBox.appendChild(img);
+        });
+
+        // mostro il bottone e aggiorno il testo
+        btn.innerText = buttonTexts[index];
+        btn.style.display = "inline-block";
+
+        index++;  // passo all’elemento successivo
+
+      }, 2000); // 2000ms = 2 secondi
+
+    } else {
+      window.location.href = "valentine.html";
+    }
+  }
+</script>
+
+
+</body>
+
+</html>

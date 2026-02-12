@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+    <title>Yay!!!</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .gif_container img {
+            max-width: 300px;
+        }
+        .extra_images img {
+            max-width: 100px;
+            margin: 5px;
+        }
+        #extraText {
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Yayyyy!!!</h1>
+        <div class="gif_container">
+            <img src="images/yay.gif" alt="Yay GIF">
+        </div>
+
+        <!-- comparirà il testo dopo 2 secondi -->
+        <p id="extraText" style="display:none;">non vedo l'ora che ci vediamooooo 💖 a dopo cutie pie</p>
+
+        <!-- compariranno le immagini extra -->
+        <div id="extraImages" class="extra_images"></div>
+    </div>
+
+    <script>
+        // array delle immagini extra
+        const images = [
+            "images/img11.jpg",
+            "images/img12.jpg",
+            "images/img13.jpg",
+			"images/img14.jpg",
+			"images/img15.jpg"
+        ];
+
+        // funzione che mostra testo e immagini dopo 2 secondi
+        setTimeout(() => {
+            // mostra il testo
+            const textEl = document.getElementById("extraText");
+            textEl.style.display = "block";
+
+            // aggiungi immagini
+            const imagesBox = document.getElementById("extraImages");
+            images.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                imagesBox.appendChild(img);
+            });
+
+        }, 2000); // 2000ms = 2 secondi
+    </script>
+</body>
+</html>
