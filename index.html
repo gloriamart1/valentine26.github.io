@@ -9,6 +9,7 @@
 
 
 <div class="container">
+  <img id="introImage" src="images/img0.png" alt="intro">
   <p1 id="title">Buongiorno Luamarito ☀️</p1>
   
   <!-- testo -->
@@ -48,9 +49,18 @@
     const textEl = document.getElementById("text");
     const btn = document.getElementById("nextBtn");
     const imagesBox = document.getElementById("imagesBox");
+	const introImage = document.getElementById("introImage");
 
     if (index < messages.length) {
-
+    /* NASCONDO IMMAGINE SOLO LA PRIMA VOLTA */
+    if (index === 0 && introImage) {
+      introImage.style.opacity = "0";
+      introImage.style.transform = "scale(0.9)";
+      
+      setTimeout(() => {
+        introImage.style.display = "none";
+      }, 400);
+    }
       // Mostro subito il testo
       textEl.innerText = messages[index];
 
